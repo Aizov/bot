@@ -8,7 +8,7 @@ use App\Setting;
 class SettingController extends Controller
 {
     public function index(){
-        return view('Admin.settings', Setting::getSettings());
+        return view('admin.settings', Setting::getSettings());
     }
     public function store(Request $request){
         Setting::where('key', '!=', NULL)->delete();
