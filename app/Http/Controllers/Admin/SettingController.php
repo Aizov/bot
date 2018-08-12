@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Setting;
+use Telegram;
 class SettingController extends Controller
 {
     public function index(){
@@ -22,12 +23,12 @@ class SettingController extends Controller
     }
     public function setWebHook(Request $request){
         $result = $this->sendTelegramData('setwebhook', [
-            'query' => ['url' => $request->url.'/'.\Telegram::getAccessToken()]
+            'query' => ['url' => $request->url . '/' . \Telegram::getAccessToken()]
             ]);
         return redirect()->route('admin.setting.index')->with('status', $result);
     }
     public function getWebHookInfo(Request $request){
-        $result = $this->sendTelegramData('getWebHookInfo');
+        $result = $this->sendTelegramData('getwebhookinfo');
         return redirect()->route('admin.setting.index')->with('status', $result);
     }
     public function sendTelegramData($route = '', $params = [], $method = 'POST'){
