@@ -27,7 +27,7 @@
         </form>
     <form id="setwebhook" action="{{route('admin.setting.setwebhook')}}" method="POST" style="display: none;">
         @csrf
-        <input type="hidden" name="uri" value="{{$url_callback_bot or ''}}">
+        <input type="hidden" name="url" value="{{$url_callback_bot or ''}}">
     </form>
     <form id="getwebhookinfo" action="{{route('admin.setting.getwebhookinfo')}}" method="POST" style="display: none;">
         @csrf
