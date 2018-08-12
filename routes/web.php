@@ -26,6 +26,6 @@ Route::middleware(['auth'])->prefix('admin')->namespace('Admin')->name('admin.')
 });
 Route::get('/home', 'HomeController@index')->name('home');
 
-Route::post(\Telegram::getAccessToken(), function(){
+Route::post('632998725:AAFLzkS1sA8O8NJj5sZlBezHBHT7u6ph9do', function(){
     Telegram::commandsHandler(true);
 });
