@@ -18,7 +18,7 @@ class SettingController extends Controller
             $setting->value = $request->$key;
             $setting->save();
         }
-        return redirect('admin.setting.index');
+        return redirect()->route('admin.setting.index');
     }
     public function setWebHook(Request $request){
         $result = $this->sendTelegramData('setwebhook', [
