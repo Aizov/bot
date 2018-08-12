@@ -25,3 +25,7 @@ Route::middleware(['auth'])->prefix('admin')->namespace('Admin')->name('admin.')
     Route::post('/setting/getwebhookinfo', 'SettingController@getwebhookinfo')->name('setting.getwebhookinfo');
 });
 Route::get('/home', 'HomeController@index')->name('home');
+
+Route::post(\Telegram::getAccessToken(), function(){
+    Telegram::commandsHandler(true);
+});
