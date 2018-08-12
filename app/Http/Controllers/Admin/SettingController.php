@@ -18,11 +18,11 @@ class SettingController extends Controller
             $setting->value = $request->$key;
             $setting->save();
         }
-        return redirect('admin.index');
+        return redirect('admin.setting.index');
     }
     public function setWebHook(Request $request){
         $result = $this->sendTelegramData('setwebhook', [
-            'query' => ['url' => $request->url().'/'.\Telegram::getAccessToken()]
+            'query' => ['url' => $request->url.'/'.\Telegram::getAccessToken()]
             ]);
         return redirect()->route('admin.setting.index')->with('status', $result);
     }
