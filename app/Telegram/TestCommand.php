@@ -27,9 +27,9 @@ class TestCommand extends Command
 
         $user = \App\User::find(1);
 
-        $this->replyWithMessage(['text' => 'Почта пользователя в Laravel: '. $user->email]);
+        $this->replyWithMessage(['text' => 'Почта пользователя в Laravel: ' . $user->email]);
 
-        $telegram_user = \Telegram::getWebHookUpdates('message');
+        $telegram_user = \Telegram::getWebHookUpdates()['message'];
 
         $text = sprintf('%s^ %s', PHP_EOL, 'Ваш номер чата', $telegram_user['from']['id']);
         $text .= sprintf('%s: %s', PHP_EOL, 'Ваше имя пользователя', $telegram_user['from']['username']);
