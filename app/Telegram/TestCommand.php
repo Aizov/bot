@@ -4,7 +4,6 @@ namespace App\Telegram;
 use Telegram\Bot\Actions;
 use Telegram\Bot\Commands\Command;
 use \App\User;
-use Telegram\Bot\Laravel\Facades\Telegram;
 /**
  * Class HelpCommand.
  */
@@ -26,6 +25,16 @@ class TestCommand extends Command
     public function handle($arguments)
     {
         $this->replyWithChatAction(['action' => Actions::TYPING]);
-        $this->replyWithMessage('Devil');
+
+        $user = User::all('id');
+
+        $this->replyWithMessage(['text' => 'Почта пользователя в Laravel: ' . $user->email]);
+
+        $telegram_user =  \Telegram::getWebHookUpdates()['message'];
+
+        $text = sprintf('%s: %s', PHP_EOL, 'Ваш номер чата', $telegram_user['from']['id']);
+        $text .= sprintf('%s: %s', PHP_EOL, 'Ваше имя пользователя', $telegram_user['from']['username']);
+
+        $this->replyWithMessage(compact('text'));
     }
 }
