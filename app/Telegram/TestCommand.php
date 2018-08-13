@@ -35,7 +35,5 @@ class TestCommand extends Command
         $text .= sprintf('%s: %s', PHP_EOL, 'Ваше имя пользователя', $telegram_user['from']['username']);
 
         $this->replyWithMessage(compact('text'));
-
-
     }
 }
